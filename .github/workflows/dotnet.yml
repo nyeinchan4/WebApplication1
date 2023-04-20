@@ -33,6 +33,6 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: website
-        path: WebApplication1/website/**
+        path: /home/runner/work/WebApplication1/WebApplication1/website/**
         if-no-files-found: error
     
