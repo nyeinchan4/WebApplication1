@@ -27,12 +27,12 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish WebApplication1/WebApplication1.csproj -c Release -o website
+      run: dotnet publish WebApplication1/WebApplication1.csproj -c Release -o WebApplication1
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.3.1
       with:
-        name: website
-        path: /home/runner/work/WebApplication1/WebApplication1/website/**
+        name: WebApplication1
+        path: /home/runner/work/WebApplication1/WebApplication1/WebApplication1/**
         if-no-files-found: error
     
