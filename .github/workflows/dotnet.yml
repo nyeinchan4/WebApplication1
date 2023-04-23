@@ -50,7 +50,7 @@ jobs:
       - name: Copy via ssh 
         uses: garygrossgarten/github-action-scp@v0.8.0
         with:
-          local: ./WebApplication1.zip
+          local: /home/runner/work/WebApplication1/WebApplication1
           remote: /home/azureuser/
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
