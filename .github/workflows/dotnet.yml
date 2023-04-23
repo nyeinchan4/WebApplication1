@@ -46,7 +46,17 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: WebApplication1
-
+      
+      - name: Copy via ssh 
+        uses: garygrossgarten/github-action-scp@v0.8.0
+        with:
+          local: ./WebApplication1.zip
+          remote: /home/azureuser/
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: 22
+       
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -54,10 +64,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 22
-          script: |
-             ls
-             pwd
-             echo "Hello World"
+          script: ls
+             
+             
             
  
     
