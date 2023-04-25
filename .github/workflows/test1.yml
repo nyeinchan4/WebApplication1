@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v2.3.1
       with:
         name: WebApplication1
-        path: /home/runner/work/WebApplication1/WebApplication1/WebApplication1/WebApplication1.zip
+        path: /home/runner/work/WebApplication1/WebApplication1/WebApplication1.zip
         if-no-files-found: error
         
 
