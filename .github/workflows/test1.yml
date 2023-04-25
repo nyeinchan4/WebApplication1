@@ -27,7 +27,9 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish WebApplication1/WebApplication1.csproj -c Release -o WebApplication1 && zip -r zip -r WebApplication1.zip WebApplication1 WebApplication1
+      run: |
+       dotnet publish WebApplication1/WebApplication1.csproj -c Release -o WebApplication1
+       zip  -r WebApplication1.zip WebApplication1
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.3.1
