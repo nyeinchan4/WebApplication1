@@ -1,0 +1,33 @@
+name: ASP.NET Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build and publish
+      run: dotnet publish -c Release -o '$(Build.ArtifactStagingDirectory)/app'
+      env:
+        Build.ArtifactStagingDirectory: $(System.DefaultWorkingDirectory)/artifacts
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: app
+        path: $(Build.ArtifactStagingDirectory)/app
