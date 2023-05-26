@@ -1,12 +1,7 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
     branches: [ "master" ]
 
 jobs:
@@ -15,36 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Publish
-      run: |
-       dotnet publish WebApplication1/WebApplication1.csproj -c Release -o WebApplication1
-       zip  -r WebApplication1.zip WebApplication1
-    
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.3.1
-      with:
-        name: WebApplication1
-        path: /home/runner/work/WebApplication1/WebApplication1/WebApplication1.zip
-        if-no-files-found: error
-        
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: WebApplication1
+      - name: Build
+        run : |
+          echo "starting"
+          sleep 2m
